@@ -121,7 +121,7 @@ public abstract class QueryTreeNode implements Visitable
 
     QueryTreeNode(ContextManager cm) {
         this.cm = cm;
-		//System.out.println("===QueryTreeNode===124==="+this.getClass().getSimpleName());
+
         if (SanityManager.DEBUG)
        {
            SanityManager.ASSERT(cm != null,
@@ -684,9 +684,9 @@ public abstract class QueryTreeNode implements Visitable
 	 *
 	 * @exception StandardException on error
 	 */
-	public final Visitable accept(Visitor v) throws StandardException {
-
-		//System.out.println("===accept===689==="+this.getClass().getSimpleName()+"==="+v.getClass().getSimpleName());
+	public final Visitable accept(Visitor v)
+		throws StandardException
+	{
 		final boolean childrenFirst = v.visitChildrenFirst(this);
 		final boolean skipChildren = v.skipChildren(this);
 

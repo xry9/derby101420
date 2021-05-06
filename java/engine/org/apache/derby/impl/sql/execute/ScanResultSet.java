@@ -120,7 +120,7 @@ abstract class ScanResultSet extends NoPutResultSetImpl {
         super(activation, resultSetNumber,
               optimizerEstimatedRowCount,
               optimizerEstimatedCost);
-
+        System.out.println("===ScanResultSet===123===");//try { Integer.parseInt("ScanResultSet"); }catch (Exception e){e.printStackTrace();}
         this.tableLocked = tableLocked;
         suppliedLockMode = lockMode;
 

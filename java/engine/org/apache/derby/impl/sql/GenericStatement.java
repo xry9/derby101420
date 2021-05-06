@@ -355,8 +355,8 @@ public class GenericStatement
 
 				//Only top level statements go through here, nested statement
 				//will invoke this method from other places
-				StatementNode qt = (StatementNode) p.parseStatement(statementText, paramDefaults);
-				System.out.println("===prepMinion===359==="+statementText);
+				StatementNode qt = (StatementNode)
+                        p.parseStatement(statementText, paramDefaults);
 
 				parseTime = getCurrentTimeMillis(lcc);
 
@@ -367,8 +367,8 @@ public class GenericStatement
 				{
 					if (SanityManager.DEBUG_ON("DumpParseTree")) 
 					{
-
-						SanityManager.GET_DEBUG_STREAM().print("\n\n============PARSE===========\n\n");
+						SanityManager.GET_DEBUG_STREAM().print(
+							"\n\n============PARSE===========\n\n");
 						qt.treePrint();
 						lcc.getPrintedObjectsMap().clear();
 					}
@@ -408,8 +408,8 @@ public class GenericStatement
 					{
 						if (SanityManager.DEBUG_ON("DumpBindTree")) 
 						{
-							SanityManager.GET_DEBUG_STREAM().print("\n\n============BIND===========\n\n");
-
+							SanityManager.GET_DEBUG_STREAM().print(
+								"\n\n============BIND===========\n\n");
 							qt.treePrint();
 							lcc.getPrintedObjectsMap().clear();
 						}
@@ -534,8 +534,8 @@ public class GenericStatement
 					{
 						if (SanityManager.DEBUG_ON("DumpOptimizedTree")) 
 						{
-							SanityManager.GET_DEBUG_STREAM().print("\n\n============OPT===========\n\n");
-
+							SanityManager.GET_DEBUG_STREAM().print(
+								"\n\n============OPT===========\n\n");
 							qt.treePrint();
 							lcc.getPrintedObjectsMap().clear();
 						}
@@ -642,7 +642,7 @@ public class GenericStatement
 
 		if (statementContext != null)
 			lcc.popStatementContext(statementContext, null);
-
+		System.out.println("===prepMinion===645===");
 		return preparedStmt;
 	}
 
@@ -650,8 +650,8 @@ public class GenericStatement
     private void walkAST( LanguageConnectionContext lcc, Visitable queryTree, int phase ) throws StandardException
     {
         ASTVisitor visitor = lcc.getASTVisitor();
-		//System.out.println("===walkAST===653==="+(visitor != null?visitor.getClass().getSimpleName():"null"));
-        if ( visitor != null ) {
+        if ( visitor != null )
+        {
             visitor.begin( statementText, phase );
             queryTree.accept( visitor );
             visitor.end( phase );

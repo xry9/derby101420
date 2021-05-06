@@ -376,8 +376,8 @@ public class EmbedResultSet extends ConnectionChild
      * are no more rows
 	 * @exception SQLException thrown on failure.
      */
-    public boolean next() throws SQLException 
-	{
+    public boolean next() throws SQLException {
+		System.out.println("===next===380===");
         // we seem to have some trigger paths which don't have
         // statement initialized, may not need this check in those cases
         if (maxRows !=0 )
@@ -401,8 +401,8 @@ public class EmbedResultSet extends ConnectionChild
 	}
 
 	protected boolean movePosition(int position, int row, String positionText)
-		throws SQLException
-	{
+		throws SQLException {
+		System.out.println("===movePosition===405==="+theResults.getClass().getName());
 		closeCurrentStream();	// closing currentStream does not depend on the
 								// underlying connection.  Do this outside of
 								// the connection synchronization.
@@ -703,7 +703,7 @@ public class EmbedResultSet extends ConnectionChild
             // backwards compatibility.
         }
 			try {
-
+				//System.out.println("===getString===706===");try { Integer.parseInt("getString"); }catch (Exception e){e.printStackTrace();}
 				DataValueDescriptor dvd = getColumn(columnIndex);
 
 				if (wasNull = dvd.isNull())
@@ -808,9 +808,9 @@ public class EmbedResultSet extends ConnectionChild
     public final int getInt(int columnIndex) throws SQLException	{
 		checkIfClosed("getInt");
 		try {
+			System.out.println("===getInt===811===");
 
 			DataValueDescriptor dvd = getColumn(columnIndex);
-
 			if (wasNull = dvd.isNull())
 				return 0;
 
@@ -4694,11 +4694,11 @@ public class EmbedResultSet extends ConnectionChild
 		throws SQLException, StandardException {
 
 	  closeCurrentStream();
-
 	  if (columnIndex < 1 || columnIndex > resultDescription.getColumnCount()) {
 		  throw newSQLException(SQLState.COLUMN_NOT_FOUND, columnIndex);
 	  }
-	  if (isOnInsertRow || currentRowHasBeenUpdated && columnGotUpdated[columnIndex -1]) {
+		System.out.println("===getColumn===4700==="+(isOnInsertRow || currentRowHasBeenUpdated && columnGotUpdated[columnIndex -1])+"==="+currentRow.getClass().getName());
+		if (isOnInsertRow || currentRowHasBeenUpdated && columnGotUpdated[columnIndex -1]) {
 		  return updateRow.getColumn(columnIndex);
 	  } else {
 		  checkOnRow(); // make sure there's a row

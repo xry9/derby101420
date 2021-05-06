@@ -133,7 +133,7 @@ class RowResultSet extends NoPutResultSetImpl
 	public ExecRow	getNextRowCore() throws StandardException {
 		if( isXplainOnlyMode() )
 			return null;
-		System.out.println("===getNextRowCore===136===");
+
 		currentRow = null;
 		beginTime = getCurrentTimeMillis();
 		if (isOpen) 

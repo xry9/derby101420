@@ -226,9 +226,9 @@ class BulkTableScanResultSet extends TableScanResultSet
      *
 	 * @exception StandardException thrown on failure to open
 	 */
-	protected void openScanController(TransactionController tc) throws StandardException {
-
-		System.out.println("===openScanController===231===");
+	protected void openScanController(TransactionController tc)
+		throws StandardException
+	{
 		DataValueDescriptor[] startPositionRow = startPosition == null ? null : startPosition.getRowArray();
 		DataValueDescriptor[] stopPositionRow = stopPosition == null ? null : stopPosition.getRowArray();
 
@@ -423,7 +423,7 @@ outer:		for (;;)
 		numRowsInArray =
 				((GroupFetchScanController) scanController).fetchNextGroup(
                                                rowArray, rowLocations);
-
+		System.out.println("===reloadArray===426==="+scanController.getClass().getName());
 		return numRowsInArray;
 	}
 

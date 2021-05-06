@@ -121,11 +121,11 @@ class HeapScan
         {
             if (SanityManager.DEBUG)
             {
-                SanityManager.ASSERT(
-                    rowloc_array[index] instanceof HeapRowLocation);
-            }
+                SanityManager.ASSERT(rowloc_array[index] instanceof HeapRowLocation);
 
+            }
             ((HeapRowLocation)rowloc_array[index]).setFrom(pos.current_rh);
+            System.out.println("===setRowLocationArray===128==="+rowloc_array[index]);
         }
     }
 

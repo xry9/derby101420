@@ -93,8 +93,8 @@ class ValueRow implements ExecRow
 		if (position > column.length)
 			realloc(position); // enough for this column
 		column[position-1] = col;
+		//System.out.println("===setColumn===96===");try { Integer.parseInt("setColumn"); }catch (Exception e){e.printStackTrace();}
 	}
-
 
 	/*
 	** ExecRow interface

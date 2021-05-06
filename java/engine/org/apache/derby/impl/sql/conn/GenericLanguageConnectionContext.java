@@ -1100,7 +1100,8 @@ public class GenericLanguageConnectionContext
      * @see LanguageConnectionContext#prepareInternalStatement
      */
         public PreparedStatement prepareInternalStatement(SchemaDescriptor compilationSchema, String sqlText, boolean isForReadOnly, boolean forMetaData) 
-        throws StandardException {
+        throws StandardException 
+        {
             if (forMetaData) {
                 //DERBY-2946
                 //Make sure that metadata queries always run with SYS as 
@@ -1110,7 +1111,6 @@ public class GenericLanguageConnectionContext
                 //to system tables. 
                 compilationSchema = getDataDictionary().getSystemSchemaDescriptor(); 
             }
-            System.out.println("===prepareInternalStatement===1113==="+sqlText);
         return connFactory.getStatement(compilationSchema, sqlText, isForReadOnly).prepare(this, forMetaData);
         }
 

@@ -99,13 +99,13 @@ public final class FormatableBitSet implements Formatable, Cloneable
 	public FormatableBitSet()
 	{
 		value = ArrayUtil.EMPTY_BYTE_ARRAY;
+		//System.out.println("===FormatableBitSet===102===");
 	}
-
 	/**
 	 * Constructs a Bit with the initial number of bits
 	 */
-	public FormatableBitSet(int numBits)
-	{
+	public FormatableBitSet(int numBits) {
+		//System.out.println("===FormatableBitSet===108===");
 		if (numBits < 0) {
 			throw new
 			IllegalArgumentException("Bit set size "+ numBits +
@@ -135,8 +135,8 @@ public final class FormatableBitSet implements Formatable, Cloneable
 		value = ArrayUtil.copy( newValue );
 		bitsInLastByte = 8;
 		lengthAsBits = calculateLength(newValue.length);
+		//System.out.println("===FormatableBitSet===138===");//try { Integer.parseInt("FormatableBitSet"); }catch (Exception e){e.printStackTrace();}
 	}
-
 	/**
 	 * Copy constructor
 	 *
@@ -147,7 +147,7 @@ public final class FormatableBitSet implements Formatable, Cloneable
 		if (SanityManager.DEBUG)
 			SanityManager.ASSERT(
                 original != null, "cannot make copy from a null FormatableBitSet");
-
+		//System.out.println("===FormatableBitSet===150===");
 		bitsInLastByte = original.bitsInLastByte;
 		lengthAsBits = original.lengthAsBits;
 
@@ -913,7 +913,7 @@ public final class FormatableBitSet implements Formatable, Cloneable
 	{
 		int lenInBits;
 		int lenInBytes;
-
+		//System.out.println("===readExternal===916===");//try { Integer.parseInt("readExternal"); }catch (Exception e){e.printStackTrace();}
 		lenInBits = in.readInt();
 
 		lenInBytes = FormatableBitSet.numBytesFromBits(lenInBits);

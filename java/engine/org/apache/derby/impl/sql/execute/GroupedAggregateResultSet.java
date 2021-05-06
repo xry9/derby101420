@@ -208,7 +208,7 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 		// is access to open controlled and ensured valid.
 		if (SanityManager.DEBUG)
 	    	SanityManager.ASSERT( ! isOpen, "GroupedAggregateResultSet already open");
-
+		System.out.println("===openCore===211==="+source.getClass().getName());
         sortResultRow = (ExecIndexRow) getRowTemplate().getClone();
         sourceExecIndexRow = (ExecIndexRow) getRowTemplate().getClone();
 
@@ -664,8 +664,8 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 	private ExecIndexRow getRowFromSorter()
 		throws StandardException
 	{
-		ExecIndexRow			inputRow = null;	
-		
+		ExecIndexRow			inputRow = null;
+		System.out.println("===getRowFromSorter===668==="+scanController.getClass().getName());
 		if (scanController.next())
 		{
 			// REMIND: HACKALERT we are assuming that result will

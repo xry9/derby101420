@@ -575,6 +575,7 @@ public abstract class GenericScanController
         if (max_rowcnt == -1)
             max_rowcnt = Long.MAX_VALUE;
 
+
         if (SanityManager.DEBUG)
         {
             if (row_array != null)

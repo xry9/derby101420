@@ -35,15 +35,15 @@ import org.apache.derby.iapi.types.TypeId;
  * Definition for the SUM()/AVG() aggregates.
  *
  */
-class SumAvgAggregateDefinition implements AggregateDefinition {
+class SumAvgAggregateDefinition
+		implements AggregateDefinition 
+{
 	private boolean isSum;
 	/**
 	 * Niladic constructor.  Does nothing.  For ease
 	 * Of use, only.
 	 */
-    public SumAvgAggregateDefinition() {
-		System.out.println("===SumAvgAggregateDefinition===45===");//try { Integer.parseInt("SumAvgAggregateDefinition"); }catch (Exception e){e.printStackTrace();}
-    }
+    public SumAvgAggregateDefinition() { super(); }
 
 	/**
 	 * Determines the result datatype.  Accept NumberDataValues

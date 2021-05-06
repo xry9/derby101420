@@ -555,8 +555,8 @@ public class StoredPage extends CachedPage
     public StoredPage()
     {
         super();
+        //System.out.println("===StoredPage===558===");//try { Integer.parseInt("StoredPage"); }catch (Exception e){e.printStackTrace();}
     }
-
     /**************************************************************************
      * Private/Protected methods of This class:
      **************************************************************************

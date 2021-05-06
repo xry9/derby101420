@@ -145,7 +145,7 @@ class SelectNode extends ResultSetNode
 		 * Consider adding selectAggregates and whereAggregates 
 		 */
         setResultColumns( selectList );
-		System.out.println("===SelectNode===148==="+selectList+"==="+fromList);try { Integer.parseInt("SelectNode"); }catch (Exception e){e.printStackTrace();}
+
         if (getResultColumns() != null) {
 			getResultColumns().markInitialSize();
         }
@@ -571,11 +571,11 @@ class SelectNode extends ResultSetNode
 		// WindowFunctionNode.bindExpression.
 
 		fromListParam.setWindows(windows);
-		System.out.println("===bindExpressions===574==="+fromListParam+"==="+selectSubquerys+"==="+selectAggregates);
-		getResultColumns().bindExpressions(fromListParam,
+
+		getResultColumns().bindExpressions(fromListParam, 
 									  selectSubquerys,
 									  selectAggregates);
-		System.out.println("===bindExpressions===578==="+fromListParam+"==="+selectSubquerys+"==="+selectAggregates);
+
 		/* We're done if we're only binding the target list.
 		 * (After we restore the fromList, of course.)
 		 */

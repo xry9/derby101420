@@ -75,8 +75,8 @@ public final class DataStore {
      */
     public DataStore(String databaseName) {
         this.databaseName = databaseName;
-        System.out.println("===DataStore===78===");
     }
+
     /**
      * Returns the database name, which is expected to equal the path of the
      * service root.

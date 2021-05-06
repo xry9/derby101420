@@ -159,8 +159,8 @@ class GroupByNode extends SingleChildResultSetNode
 		ResultColumnList newBottomRCL;
         this.groupingList = groupingList;
         this.aggregates = aggregates;
-		System.out.println("===GroupByNode===162==="+aggregates.size());
 		this.parent = this;
+
 		/*
 		** The first thing we do is put ourselves on
 		** top of the SELECT.  The select becomes the

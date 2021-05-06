@@ -244,10 +244,10 @@ public class utilMain {
 				}
 			}
 			firstRun = false;
+
 			supportIJProperties(connEnv[currCE]);
     	}
 		this.out = out;
-		out.println("===runScriptGuts===250===");
 		runScriptGuts();
 		cleanupGo(in);
 	}
@@ -300,7 +300,7 @@ public class utilMain {
 	private int runScriptGuts() {
 
         int scriptErrorCount = 0;
-		out.println("===runScriptGuts===303===");
+		
 		boolean done = false;
 		String command = null;
 		while (!ijParser.exit && !done) {
@@ -308,13 +308,13 @@ public class utilMain {
 				ijParser.setConnection(connEnv[currCE], (numConnections > 1));
 			} catch(Throwable t){
 				//do nothing
-			}
+				}
+
 			connEnv[currCE].doPrompt(true, out);
-			try {
-				command = null;
+   			try {
+   				command = null;
 				out.flush();
 				command = commandGrabber[currCE].nextStatement();
-				//out.println("===runScriptGuts===317==="+command);
 
 				// if there is no next statement,
 				// pop back to the top saved grabber.
@@ -325,8 +325,8 @@ public class utilMain {
 					if (oldGrabbers.empty())
 						fileInput = initialFileInput;
 					command = commandGrabber[currCE].nextStatement();
-
 				}
+
 				// if there are no grabbers left,
 				// we are done.
 				if (command == null && oldGrabbers.empty()) {
@@ -351,8 +351,8 @@ public class utilMain {
 					}
 
 					ijResult result = ijParser.ijStatement();
-					out.println("===runScriptGuts===354==="+result);
 					displayResult(out,result,connEnv[currCE].getConnection());
+
 					// if something went wrong, an SQLException or ijException was thrown.
 					// we can keep going to the next statement on those (see catches below).
 					// ijParseException means we try the SQL parser.
@@ -395,7 +395,7 @@ public class utilMain {
 			/* Go to the next connection/user, if there is one */
 			currCE = ++currCE % connEnv.length;
 		}
-		out.println("===runScriptGuts===398===");
+        
         return scriptErrorCount;
 	}
 	
@@ -448,7 +448,7 @@ public class utilMain {
 	private void displayResult(LocalizedOutput out, ijResult result, Connection conn) throws SQLException {
 		// display the result, if appropriate.
 		if (result!=null) {
-			//out.println("===displayResult===451==="+(result.isConnection())+"==="+(result.isStatement())+"==="+(result.isNextRowOfResultSet())+"==="+(result.isVector())+"==="+(result.isMulti())+"==="+(result.isResultSet())+"==="+(result.isMultipleResultSetResult())+"==="+(result.isException()));
+			System.out.println("===displayResult===451==="+(result.isConnection())+"==="+(result.isStatement())+"==="+(result.isNextRowOfResultSet())+"==="+(result.isVector())+"==="+(result.isMulti())+"==="+(result.isResultSet())+"==="+(result.isMultipleResultSetResult()));
 			if (result.isConnection()) {
 				if (result.hasWarnings()) {
 					JDBCDisplayUtil.ShowWarnings(out,result.getSQLWarnings());
@@ -457,11 +457,11 @@ public class utilMain {
 			} else if (result.isStatement()) {
 				Statement s = result.getStatement();
 				try {
+					System.out.println("===displayResult===460===");
 				    JDBCDisplayUtil.DisplayResults(out,s,connEnv[currCE].getConnection());
+					System.out.println("===displayResult===462===");
 				} catch (SQLException se) {
-				    result.closeStatement();
-					throw se;
-				}
+				    result.closeStatement();throw se; }
 				result.closeStatement();
 			} else if (result.isNextRowOfResultSet()) {
 				ResultSet r = result.getNextRowOfResultSet();
@@ -529,10 +529,10 @@ public class utilMain {
 			if (elapsedTimeOn) {
 				beginTime = System.currentTimeMillis();
 			}
-
 			ijResult result = ijParser.executeImmediate(command);
-			//System.out.println("===doCatch===534===");
+			System.out.println("===doCatch===533==="+result);
 			displayResult(out,result,connEnv[currCE].getConnection());
+			System.out.println("===doCatch===535==="+result);
 			/* Print the elapsed time if appropriate */
 			if (elapsedTimeOn) {
 				endTime = System.currentTimeMillis();

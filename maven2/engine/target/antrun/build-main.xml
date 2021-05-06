@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project name="maven-antrun-" default="main"  >
-<target name="main">
-  <copy file="/Users/fintopia/app/mygit/db-derby-10.14.2.0-src/maven2/engine/../../jars/insane/derby.jar" tofile="/Users/fintopia/app/mygit/db-derby-10.14.2.0-src/maven2/engine/target/derby-ALPHA_VERSION.jar" overwrite="true"/>
-</target>
-</project>

@@ -689,8 +689,8 @@ public class EmbedStatement extends ConnectionChild
 				    (lcc.getDefaultSchema(), sql, resultSetConcurrency==
                         java.sql.ResultSet.CONCUR_READ_ONLY, false);
 				activation =
-					preparedStatement.getActivation(lcc, resultSetType == java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE);
-
+					preparedStatement.getActivation(lcc, resultSetType ==
+                        java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE);
 				checkRequiresCallableStatement(activation);
                 InterruptStatus.restoreIntrFlagIfSeen(lcc);
 			 } catch (Throwable t) {
@@ -1222,7 +1222,7 @@ public class EmbedStatement extends ConnectionChild
 					}
 
 					results = lrs;
-					System.out.println("===results===1225===");
+
 					return true;
 				}
 			}
@@ -1357,7 +1357,7 @@ public class EmbedStatement extends ConnectionChild
 
 					EmbedResultSet lresults = factory.newEmbedResultSet(getEmbedConnection(), resultsToWrap, forMetaData, this, ps.isAtomic());
 					results = lresults;
-					//System.out.println("===results===1360===");
+					System.out.println("===executeStatement===1360==="+lresults+"==="+resultsToWrap.getRowNumber());
 
 					// Set up the finalization of the ResultSet to
 					// mark the activation as unused. It will be
@@ -1721,9 +1721,9 @@ public class EmbedStatement extends ConnectionChild
 				actualCount = maxDynamicResultSets;
 			}
 
+
 			updateCount = -1L;
 			results = sorted[0];
-			System.out.println("===results===1726===");
 			currentDynamicResultSet = 0;
 
 			// 0100C is not returned for procedures written in Java, from the SQL2003 spec.

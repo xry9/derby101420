@@ -179,7 +179,7 @@ public class Main {
 		 * us in this method.
 		 */
 		me = main.getMain(out);
-		out.println("===mainCore===182===");
+
 		/* Let the processing begin! */
 		me.go(in, out);
 		in.close(); out.close();

@@ -46,12 +46,11 @@ abstract class InputStreamFile<F extends BaseStorageFactory>
     final String path;
     final int nameStart; // getName() = path.substring( nameStart)
     final F storageFactory;
-
-    InputStreamFile(F storageFactory, String path) {
+    InputStreamFile(F storageFactory, String path)
+    {
         System.out.println("===InputStreamFile===51===");
         this.storageFactory = storageFactory;
-        if( path == null || path.length() == 0)
-        {
+        if( path == null || path.length() == 0) {
             this.path = storageFactory.dataDirectory;
             nameStart = -1;
         }
@@ -68,11 +67,11 @@ abstract class InputStreamFile<F extends BaseStorageFactory>
         }
     }
 
-    InputStreamFile(F storageFactory, String parent, String name) {
+    InputStreamFile(F storageFactory, String parent, String name)
+    {
         System.out.println("===InputStreamFile===72===");
         this.storageFactory = storageFactory;
-        StringBuilder sb =
-                new StringBuilder(storageFactory.separatedDataDirectory);
+        StringBuilder sb = new StringBuilder(storageFactory.separatedDataDirectory);
         if( File.separatorChar != '/')
         {
             sb.append( parent.replace( File.separatorChar, '/'));
@@ -90,7 +89,7 @@ abstract class InputStreamFile<F extends BaseStorageFactory>
     }
 
     InputStreamFile(InputStreamFile<F> dir, String name) {
-        System.out.println("===InputStreamFile===93===");
+        System.out.println("===InputStreamFile===92===");
         this.storageFactory = dir.storageFactory;
         StringBuilder sb = new StringBuilder(dir.path);
         sb.append( '/');
@@ -103,7 +102,7 @@ abstract class InputStreamFile<F extends BaseStorageFactory>
     }
 
     InputStreamFile(F storageFactory, String child, int pathLen) {
-        System.out.println("===InputStreamFile===106===");
+        System.out.println("===InputStreamFile===105===");
         this.storageFactory = storageFactory;
         path = child.substring( 0, pathLen);
         nameStart = this.path.lastIndexOf( '/') + 1;

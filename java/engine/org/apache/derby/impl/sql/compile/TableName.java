@@ -50,12 +50,12 @@ public class TableName extends QueryTreeNode
      * @param cm            The context manager
 	 */
 
-    TableName(String schemaName, String tableName, ContextManager cm) {
+    TableName(String schemaName, String tableName, ContextManager cm)
+	{
         super(cm);
 		hasSchema = schemaName != null;
         this.schemaName = schemaName;
         this.tableName = tableName;
-		//System.out.println("===TableName===58===");//try{ Integer.parseInt("TableName"); }catch (Exception e){e.printStackTrace();}
 	}
 
 	/**
@@ -75,11 +75,11 @@ public class TableName extends QueryTreeNode
         String tableName,
         int tokBeginOffset,
         int tokEndOffset,
-        ContextManager cm) {
+        ContextManager cm)
+	{
         this(schemaName, tableName, cm);
         this.setBeginOffset(tokBeginOffset);
         this.setEndOffset(tokEndOffset);
-		//System.out.println("===TableName===82===");try{ Integer.parseInt("TableName"); }catch (Exception e){e.printStackTrace();}
 	}
 
 	/**

@@ -167,8 +167,8 @@ public class ParserImpl implements Parser
 		{
             SQLParser p = getParser();
             return isStatement
-                    ? p.statement(sql, paramDefaults)
-                    : p.searchCondition(sql);
+                    ? p.Statement(sql, paramDefaults)
+                    : p.SearchCondition(sql);
 		}
 		catch (ParseException e)
 		{

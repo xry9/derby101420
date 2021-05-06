@@ -482,10 +482,10 @@ implements NoPutResultSet
 				SanityManager.THROWASSERT(
 				this + "expected to be the top ResultSet");
 		}
-
 		attachStatementContext();
-
-		return getNextRowCore();
+		ExecRow r = getNextRowCore();
+		System.out.println("===getNextRow===487==="+(r !=null? r.getClass().getName():"null"));//+r.nColumns()+"==="+r.getClass().getName()+"==="+r.getColumn(1).getString()
+		return r;
 	}
 
 	/**

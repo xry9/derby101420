@@ -220,8 +220,8 @@ public class Heap
      **/
     public Heap()
     {
+        //System.out.println("===Heap===223===");try { Integer.parseInt("Heap"); }catch (Exception e){e.printStackTrace();}
     }
-
     /* Private/Protected methods of This class: */
 
     /**

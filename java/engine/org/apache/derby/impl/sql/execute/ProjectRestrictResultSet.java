@@ -252,7 +252,7 @@ class ProjectRestrictResultSet extends NoPutResultSetImpl
 	public ExecRow	getNextRowCore() throws StandardException {
 		if( isXplainOnlyMode() )
 			return null;
-
+		System.out.println("===getNextRowCore===255==="+source.getClass().getName());
 	    ExecRow candidateRow = null;
 	    ExecRow result = null;
 	    boolean restrict = false;

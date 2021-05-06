@@ -338,7 +338,7 @@ public class CursorNode extends DMLStatementNode
 		{
 		    // If the statement is opened with CONCUR_READ_ONLY, the upgrade mode is 
 		    // set to read only.
-		    
+
 		    // NOTE: THIS IS NOT COMPATIBLE WITH THE ISO/ANSI SQL STANDARD.
 
 		    // According to the SQL-standard:

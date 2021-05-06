@@ -468,7 +468,7 @@ recompileOutOfDatePlan:
 			try {
 	
 				resultSet = activation.execute();
-				//System.out.println("===executeStmt===471==="+activation.getClass().getName()+"==="+resultSet.getClass().getName());
+				System.out.println("===executeStmt===471==="+activation.getClass().getName()+"==="+resultSet.getClass().getName());
 				resultSet.open();
 			} catch (StandardException se) {
 				/* Cann't handle recompiling SPS action recompile here */

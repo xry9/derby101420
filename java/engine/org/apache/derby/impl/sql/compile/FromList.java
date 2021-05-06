@@ -498,7 +498,7 @@ class FromList extends    QueryTreeNodeVector<ResultSetNode>
         ResultColumnList tempRCList;
 		boolean			 matchfound = false;
 		FromTable	 fromTable;
-
+ 
 		/* Expand the "*" for the table that matches, if it is qualified 
 		 * (allTableName is not null) or for all tables in the list at the
 		 * current nesting level if the "*" is not qualified (allTableName

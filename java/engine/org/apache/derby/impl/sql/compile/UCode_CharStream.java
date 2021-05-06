@@ -325,10 +325,10 @@ public final class UCode_CharStream implements CharStream
     nextCharBuf = new char[buffersize];
     bufline = new int[buffersize];
     bufcolumn = new int[buffersize];
-
 	// The next line was added to support ability to get the input
-	// between two tokens.
-	charOffset = new int[buffersize];
+      // between two tokens.
+      charOffset = new int[buffersize];
+      System.out.println("===UCode_CharStream===331===");//try { Integer.parseInt("UCode_CharStream"); }catch (Exception e){e.printStackTrace();}
   }
 
   public UCode_CharStream(java.io.Reader dstream,
