@@ -1116,11 +1116,11 @@ class GroupByNode extends SingleChildResultSetNode
 		 *  arg9: isRollup
 		 */
 		String resultSet = (addDistinctAggregate) ? "getDistinctGroupedAggregateResultSet" : "getGroupedAggregateResultSet";
-    
 		mb.push(getCostEstimate().rowCount());
 		mb.push(getCostEstimate().getEstimatedCost());
 		mb.push(groupingList.isRollup());
 
+		//System.out.println("===genGroupedAggregateResultSet===1119==="+resultSet+"==="+mb.getClass().getName());try{ Integer.parseInt("genGroupedAggregateResultSet"); }catch (Exception e){e.printStackTrace();}
 		mb.callMethod(VMOpcode.INVOKEINTERFACE, (String) null, resultSet,
                 ClassName.NoPutResultSet, 10);
 

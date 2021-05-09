@@ -137,11 +137,11 @@ class RAFContainer4 extends RAFContainer {
              * functionTests/util/corruptio/CorruptRandomAccessFile.java.
              * An interface rework may be necessary.
              */
+            //System.out.println("===getChannel===140===");
             return ((RandomAccessFile) file).getChannel();
         }
         return null;
     }
-
     /**
      * <p>
      * Return the file channel for the current value of the {@code fileData}
@@ -161,9 +161,9 @@ class RAFContainer4 extends RAFContainer {
         if (ourChannel == null) {
             ourChannel = getChannel(fileData);
         }
+        //System.out.println("===getChannel===164===");
         return ourChannel;
     }
-
     private ContainerKey currentIdentity;
 
     /*
@@ -281,8 +281,8 @@ class RAFContainer4 extends RAFContainer {
      *  @exception StandardException Standard Derby error policy
      */
     private void readPage(long pageNumber, byte[] pageData, long offset)
-         throws IOException, StandardException
-    {
+         throws IOException, StandardException {
+        //System.out.println("===readPage===285===");//try { Integer.parseInt("readPage"); }catch (Exception e){e.printStackTrace();}
         // Interrupt recovery "stealthMode": If this thread holds a monitor on
         //
         //   a) "this" (when RAFContainer#clean calls getEmbryonicPage via

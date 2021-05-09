@@ -138,8 +138,8 @@ abstract class ScanResultSet extends NoPutResultSetImpl {
         ExecPreparedStatement ps = activation.getPreparedStatement();
 
         // Create a candidate row.
-        resultRowBuilder =
-                (ExecRowBuilder) ps.getSavedObject(resultRowTemplate);
+        resultRowBuilder = (ExecRowBuilder) ps.getSavedObject(resultRowTemplate);
+
         candidate = resultRowBuilder.build(activation.getExecutionFactory());
 
         this.accessedCols = colRefItem != -1 ?

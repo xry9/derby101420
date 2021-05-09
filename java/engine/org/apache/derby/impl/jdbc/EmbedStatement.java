@@ -1357,7 +1357,7 @@ public class EmbedStatement extends ConnectionChild
 
 					EmbedResultSet lresults = factory.newEmbedResultSet(getEmbedConnection(), resultsToWrap, forMetaData, this, ps.isAtomic());
 					results = lresults;
-					System.out.println("===executeStatement===1360==="+lresults+"==="+resultsToWrap.getRowNumber());
+					System.out.println("===executeStatement===1360==="+factory.getClass().getSimpleName()+"==="+(lresults.next()?lresults.getColumn(1)+"-"+lresults.getColumn(2):"null")+"==="+resultsToWrap.getRowNumber());
 
 					// Set up the finalization of the ResultSet to
 					// mark the activation as unused. It will be

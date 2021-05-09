@@ -931,14 +931,10 @@ implements NoPutResultSet
 				// otherCols bit map.
 				if (i >= numCandidateCols)
 					break;
-
 				DataValueDescriptor sc = candidate.getColumn(i+1);
-				if (sc != null)
-				{
-					compactRow.setColumn(
-									position + 1,
-									sc
-									);
+				if (sc != null) {
+					compactRow.setColumn(position + 1, sc);
+					System.out.println("===compactRow===937==="+sc);
 				}
 				baseColumnMap[position] = i;
 				position++;
@@ -947,6 +943,10 @@ implements NoPutResultSet
 
 		return compactRow;
 	}
+
+
+
+
 
 	/**
 	 * Copy columns from the candidate row from the store to the given
@@ -963,7 +963,7 @@ implements NoPutResultSet
 	protected ExecRow setCompactRow(ExecRow candidateRow, ExecRow compactRow)
 	{
 		ExecRow	retval;
-
+		System.out.println("===setCompactRow===966===");
 		//System.out.println("base col map " + baseColumnMap);
 		if (baseColumnMap == null)
 		{

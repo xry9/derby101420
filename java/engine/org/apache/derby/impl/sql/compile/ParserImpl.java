@@ -81,15 +81,15 @@ public class ParserImpl implements Parser
 	 * Returns a initialized (clean) TokenManager, paired w. the Parser in getParser,
 	 * Appropriate for this ParserImpl object.
 	 */
-        protected Object getTokenManager()
-        {
+        protected Object getTokenManager() {
 	    /* returned a cached tokenmanager if already exists, otherwise create */
 	    SQLParserTokenManager tm = (SQLParserTokenManager) cachedTokenManager;
+			System.out.println("===getTokenManager===87==="+(tm == null));
 	    if (tm == null) {
-		tm = new SQLParserTokenManager(charStream);
-		cachedTokenManager = tm;
+			tm = new SQLParserTokenManager(charStream);
+			cachedTokenManager = tm;
 	    } else {
-		tm.ReInit(charStream);
+			tm.ReInit(charStream);
 	    }
 	    return tm;
 	}
@@ -127,9 +127,9 @@ public class ParserImpl implements Parser
 	public Visitable parseStatement(String statementSQLText, Object[] paramDefaults)
 		throws StandardException
 	{
-        return parseStatementOrSearchCondition(
-                statementSQLText, paramDefaults, true);
-    }
+        return parseStatementOrSearchCondition(statementSQLText, paramDefaults, true);
+
+	}
 
     /**
      * Parse a full SQL statement or a fragment that represents a

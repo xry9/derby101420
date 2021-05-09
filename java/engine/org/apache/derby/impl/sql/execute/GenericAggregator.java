@@ -50,25 +50,25 @@ class GenericAggregator
 	*/
 	private ExecAggregator		cachedAggregator;
 
+
+
+
+
+
 	/**
 	 * Constructor:
 	 *
 	 * @param aggInfo 	information about the user aggregate
 	 * @param cf		the class factory. 
 	 */
-	GenericAggregator
-	(
-		AggregatorInfo	aggInfo, 
-		ClassFactory	cf
-	)
-	{
+	GenericAggregator(AggregatorInfo	aggInfo, ClassFactory	cf) {
 		this.aggInfo = aggInfo;
 		aggregatorColumnId = aggInfo.getAggregatorColNum();
 		inputColumnId = aggInfo.getInputColNum();
 		resultColumnId = aggInfo.getOutputColNum();
 		this.cf = cf;
+		System.out.println("===GenericAggregator===70==="+aggInfo.aggregateName);//try { Integer.parseInt("GenericAggregator"); }catch (Exception e){e.printStackTrace();}
 	}
-
 
 	/**
 	 * Initialize the aggregator
@@ -165,7 +165,7 @@ class GenericAggregator
 		throws StandardException
 	{
 		ExecAggregator		ua;
-
+		System.out.println("===accumulate===168==="+(inputColumn==null)+"==="+(aggregatorColumn==null));//
 		if (SanityManager.DEBUG)
 		{
 			/*
@@ -189,7 +189,7 @@ class GenericAggregator
 		{
 			ua = getAggregatorInstance();
 		}
-	
+
 		ua.accumulate(inputColumn, this);
 	}
 

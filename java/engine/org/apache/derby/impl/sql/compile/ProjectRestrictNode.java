@@ -125,7 +125,7 @@ class ProjectRestrictNode extends SingleChildResultSetNode
         this.restrictionList = restrictionList;
         this.projectSubquerys = projectSubquerys;
         this.restrictSubquerys = restrictSubquerys;
-
+		//System.out.println("===ProjectRestrictNode===128==="+childResult.getClass().getSimpleName());//try { Integer.parseInt("ProjectRestrictNode"); }catch (Exception e){e.printStackTrace();}
 		/* A PRN will only hold the tableProperties for
 		 * a result set tree if its child is not an
 		 * optimizable.  Otherwise, the properties will
@@ -1456,7 +1456,7 @@ class ProjectRestrictNode extends SingleChildResultSetNode
          *  arg12: estimated cost
          *  arg13: close method
          */
-
+		//System.out.println("===generateMinion===1459==="+this.getClass().getSimpleName()+"-"+this.hashCode()+"==="+childResult.getClass().getName());
 		acb.pushGetResultSetFactoryExpression(mb);
 		if (genChildResultSet)
 			childResult.generateResultSet(acb, mb);

@@ -370,7 +370,7 @@ public class GenericResultSetFactory implements ResultSetFactory
 	}
 
 	/**
-		@see ResultSetFactory#getGroupedAggregateResultSet
+		@see ResultSetFactory #getGroupedAggregateResultSet
 		@exception StandardException thrown on error
 	 */
 	public NoPutResultSet getGroupedAggregateResultSet(NoPutResultSet source,

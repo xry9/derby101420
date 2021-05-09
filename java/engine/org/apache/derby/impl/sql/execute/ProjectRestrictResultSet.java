@@ -276,9 +276,9 @@ class ProjectRestrictResultSet extends NoPutResultSetImpl
                     DataValueDescriptor[] row =
                             (DataValueDescriptor[])rowLocations.nextElement();
                     RowLocation rl = (RowLocation)((SQLRef)row[0]).getObject();
-                    ((ValidateCheckConstraintResultSet)source).
-                        positionScanAtRowLocation(rl);
+                    ((ValidateCheckConstraintResultSet)source).positionScanAtRowLocation(rl);
                     candidateRow = source.getNextRowCore();
+
                     // if null (deleted), we move to next
                 }
 
@@ -540,8 +540,8 @@ class ProjectRestrictResultSet extends NoPutResultSetImpl
 		{
 			if (projectMapping[index] != -1)
 			{
-                DataValueDescriptor dvd =
-                        sourceRow.getColumn(projectMapping[index]);
+
+				DataValueDescriptor dvd = sourceRow.getColumn(projectMapping[index]);
 
                 // See if the column has been marked for cloning.
                 // If the value isn't a stream, don't bother cloning it.

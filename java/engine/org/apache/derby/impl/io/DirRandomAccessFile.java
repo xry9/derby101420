@@ -60,7 +60,7 @@ class DirRandomAccessFile extends RandomAccessFile implements StorageRandomAcces
         super( name, mode);
         _name = name;
         _mode = mode;
-        System.out.println("===DirRandomAccessFile===63==="+name.getPath());//try { Integer.parseInt("DirRandomAccessFile"); }catch (Exception e){e.printStackTrace();}
+        //System.out.println("===DirRandomAccessFile===63==="+name.getPath());//try { Integer.parseInt("DirRandomAccessFile"); }catch (Exception e){e.printStackTrace();}
     }
     /** Clone this file abstaction */
     public  DirRandomAccessFile clone()

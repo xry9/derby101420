@@ -143,9 +143,9 @@ public class VirtualRandomAccessFile
     public int read(byte[] b, int off, int len) throws IOException {
         int ret = bIn.read(b, off, len);
         fp = bIn.getPosition();
+        System.out.println("===read===146===");
         return ret;
     }
-
     public void readFully(byte[] b) throws IOException {
         readFully(b, 0, b.length);
     }

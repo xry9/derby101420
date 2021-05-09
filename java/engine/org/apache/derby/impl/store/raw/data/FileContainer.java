@@ -303,13 +303,13 @@ abstract class FileContainer
 	protected static final String SPACE_TRACE = 
         (SanityManager.DEBUG ? "SpaceTrace" : null);
 
-	FileContainer(BaseDataFileFactory factory) 
-    {
+	FileContainer(BaseDataFileFactory factory) {
 		dataFactory = factory;
 		pageCache = factory.getPageCache();
 		containerCache = factory.getContainerCache();
-		
+		//System.out.println("===FileContainer===311===");
 		initContainerHeader(true);
+
 	}
 
     /**

@@ -58,9 +58,9 @@ public abstract class CursorActivation
         // the caller is authorized to run SQL read operations.
         getLanguageConnectionContext().getAuthorizer().authorize(
                 this, Authorizer.SQL_SELECT_OP);
-
         // The top-level result set should be marked as such.
-        NoPutResultSet rs = (NoPutResultSet) createResultSet();
+		System.out.println("===decorateResultSet===62==="+this.getClass().getName());
+		NoPutResultSet rs = (NoPutResultSet) createResultSet();
         rs.markAsTopResultSet();
         return rs;
     }

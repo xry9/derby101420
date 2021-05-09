@@ -74,15 +74,15 @@ abstract class GenericAggregateResultSet extends NoPutResultSetImpl
 		throws StandardException 
 	{
 		super(a, resultSetNumber, optimizerEstimatedRowCount, optimizerEstimatedCost);
+		//System.out.println("===GenericAggregateResultSet===77===");try { Integer.parseInt("GenericAggregateResultSet"); }catch (Exception e){e.printStackTrace();}
 		source = s;
 		originalSource = s;
 
-        ExecPreparedStatement ps = a.getPreparedStatement();
-        ExecutionFactory ef = a.getExecutionFactory();
+		ExecPreparedStatement ps = a.getPreparedStatement();
+		ExecutionFactory ef = a.getExecutionFactory();
 
-        rowTemplate = ef.getIndexableRow(
-                ((ExecRowBuilder) ps.getSavedObject(ra)).build(ef));
-
+		rowTemplate = ef.getIndexableRow(
+				((ExecRowBuilder) ps.getSavedObject(ra)).build(ef));
 		aggInfoList = (AggregatorInfoList) ps.getSavedObject(aggregateItem);
 		aggregates = getSortAggregators(aggInfoList, false, 
 				a.getLanguageConnectionContext(), s);

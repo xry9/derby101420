@@ -108,8 +108,8 @@ public final class FormatableBitSet implements Formatable, Cloneable
 		//System.out.println("===FormatableBitSet===108===");
 		if (numBits < 0) {
 			throw new
-			IllegalArgumentException("Bit set size "+ numBits +
-									 " is not allowed");
+			IllegalArgumentException("Bit set size "+ numBits + " is not allowed");
+
 		}
 		initializeBits(numBits);
 	}

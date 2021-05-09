@@ -487,8 +487,8 @@ class ResultColumn extends ValueNode
     void setExpression(ValueNode expression)
 	{
 		_expression = expression;
+		//System.out.println("===setExpression===490==="+expression.getClass().getName());
 	}
-
 	/**
 	 * Get the expression in this ResultColumn.  
 	 *
@@ -755,10 +755,10 @@ class ResultColumn extends ValueNode
 		if (_expression.getTableName() == null) {
 			fromList.isJoinColumnForRightOuterJoin(this);
 		}
+		System.out.println("===bindExpression===758==="+aggregates.size()+"==="+_expression.getClass().getName());
 
-		setExpression( _expression.bindExpression(fromList, subqueryList,
-                                                 aggregates) );
-
+		setExpression( _expression.bindExpression(fromList, subqueryList, aggregates));
+		System.out.println("===bindExpression===761==="+aggregates.size());
 		if (_expression instanceof ColumnReference)
 		{
 			_autoincrement = ((ColumnReference)_expression).getSource().isAutoincrement();

@@ -47,6 +47,8 @@ import org.apache.derby.iapi.services.loader.GeneratedMethod;
 
 import org.apache.derby.iapi.services.io.FormatableBitSet;
 
+import java.util.Arrays;
+
 /**
  * Read a base table or index in bulk.  Most of the
  * work for this method is inherited from TableScanResultSet.
@@ -175,7 +177,7 @@ class BulkTableScanResultSet extends TableScanResultSet
             resultColumnCount = accessedCols == null ? candidate.nColumns() : accessedCols.getNumBitsSet();
             baseColumnCount = candidate.nColumns() - 1;
             candidate.setRowArray( lopOffRowLocation() );
-
+			System.out.println("===candidate===178===");
             // remove the RowLocation from the accessed column map
             if ( accessedCols == null )
             {
@@ -340,8 +342,8 @@ class BulkTableScanResultSet extends TableScanResultSet
 	 *
 	 * @exception StandardException thrown on failure to get next row
 	 */
-	public ExecRow getNextRowCore() throws StandardException
-	{
+	public ExecRow getNextRowCore() throws StandardException {
+		System.out.println("===getNextRowCore===344===");
 		if( isXplainOnlyMode() )
 			return null;
 
@@ -375,10 +377,10 @@ outer:		for (;;)
 				while (++curRowPosition < numRowsInArray)
 				{
 					candidate.setRowArray(rowArray[curRowPosition]);
+					System.out.println("===candidate===378==="+rowArray[curRowPosition].length+"==="+ Arrays.toString(rowArray[curRowPosition])+"==="+rowArray[curRowPosition][0]);
 					currentRow = setCompactRow(candidate, currentRow);
 					rowsSeen++;
 					rowsThisScan++;
-
 					/*
 					** Skip rows where there are start or stop positioners
 					** that do not implement ordered null semantics and
@@ -420,9 +422,8 @@ outer:		for (;;)
 	private int reloadArray() throws StandardException
 	{
 		curRowPosition = -1;
-		numRowsInArray =
-				((GroupFetchScanController) scanController).fetchNextGroup(
-                                               rowArray, rowLocations);
+
+		numRowsInArray = ((GroupFetchScanController) scanController).fetchNextGroup(rowArray, rowLocations);
 		System.out.println("===reloadArray===426==="+scanController.getClass().getName());
 		return numRowsInArray;
 	}

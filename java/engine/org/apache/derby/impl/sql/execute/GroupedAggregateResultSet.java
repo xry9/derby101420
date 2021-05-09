@@ -208,7 +208,7 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 		// is access to open controlled and ensured valid.
 		if (SanityManager.DEBUG)
 	    	SanityManager.ASSERT( ! isOpen, "GroupedAggregateResultSet already open");
-		System.out.println("===openCore===211==="+source.getClass().getName());
+		//System.out.println("===openCore===211==="+source.getClass().getName());
         sortResultRow = (ExecIndexRow) getRowTemplate().getClone();
         sourceExecIndexRow = (ExecIndexRow) getRowTemplate().getClone();
 
@@ -222,14 +222,14 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 		 */
 		if (!isInSortedOrder)
 			scanController = loadSorter();
-
 		ExecIndexRow currSortedRow = getNextRowFromRS();
 		resultsComplete = (currSortedRow == null);
 		if (usingAggregateObserver)
 		{
-			if (currSortedRow != null)
-				finishedResults.add(
-					finishAggregation(currSortedRow).getClone());
+			if (currSortedRow != null){
+				System.out.println("===finishedResults===230===");
+				finishedResults.add(finishAggregation(currSortedRow).getClone());
+			}
 		}
 		else if (!resultsComplete)
 		{
@@ -356,8 +356,8 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 	 *
 	 * @return the next row in the result
 	 */
-	public ExecRow	getNextRowCore() throws StandardException 
-	{
+	public ExecRow	getNextRowCore() throws StandardException {
+		System.out.println("===getNextRowCore===360===");
 		if( isXplainOnlyMode() )
 			return null;
 
@@ -367,7 +367,7 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 		}
 
 		beginTime = getCurrentTimeMillis();
-
+		System.out.println("===getNextRowCore===370==="+(finishedResults.size() > 0)+"==="+resultsComplete);
 		if (finishedResults.size() > 0)
 			return makeCurrent(finishedResults.remove(0));
 		else if (resultsComplete)
@@ -416,9 +416,9 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 					//initializeVectorAggregation(nextRow);
 					mergeVectorAggregates(nextRow, resultRows[r], r);
 				}
-				else
-				{
+				else {
 					setRollupColumnsToNull(resultRows[r],r);
+					System.out.println("===finishedResults===421===");
 					finishedResults.add(finishAggregation(resultRows[r]));
 					/* Save a clone of the new row so
 					   that it doesn't get overwritten */
@@ -456,15 +456,15 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 		resultsComplete = true;
 		if (! usingAggregateObserver )
 		{
-			for (int r = 0; r < resultRows.length; r++)
-			{
+			for (int r = 0; r < resultRows.length; r++) {
 				setRollupColumnsToNull(resultRows[r],r);
+				System.out.println("===finishedResults===461===");
 				finishedResults.add(finishAggregation(resultRows[r]));
 			}
 		}
 		nextTime += getElapsedMillis(beginTime);
-		if (finishedResults.size() > 0)
-			return makeCurrent(finishedResults.remove(0));
+		System.out.println("===finalizeResults===466==="+(finishedResults.size() > 0));
+		if (finishedResults.size() > 0) return makeCurrent(finishedResults.remove(0));
 		else
 			return null;
 	}
@@ -610,15 +610,15 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 	// SCAN ABSTRACTION UTILITIES
 	//
 	///////////////////////////////////////////////////////////////////////////////
+
+
 	/**
 	 * Get the next output row for processing
 	 */
-	private ExecIndexRow getNextRowFromRS()
-		throws StandardException
-	{
-		return (scanController == null) ?
-			getRowFromResultSet() :
-			getRowFromSorter();
+	private ExecIndexRow getNextRowFromRS() throws StandardException {
+
+		System.out.println("===getNextRowFromRS===620==="+(scanController == null));
+		return (scanController == null) ? getRowFromResultSet() : getRowFromSorter();
 	}
 
 	/**
@@ -630,8 +630,8 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 		ExecRow					sourceRow;
 		ExecIndexRow			inputRow = null;	
 
-		if ((sourceRow = source.getNextRowCore()) != null)
-		{
+		if ((sourceRow = source.getNextRowCore()) != null) {
+			System.out.println("===getRowFromResultSet===634==="+sourceExecIndexRow.getClass().getSimpleName()+"==="+sourceRow.getClass().getSimpleName()+"==="+source.getClass().getSimpleName());
 			rowsInput++;
 			sourceExecIndexRow.execRowToExecIndexRow(sourceRow);
 			inputRow = sourceExecIndexRow;
@@ -737,7 +737,7 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 
 			// initialize the aggregator
 			currAggregate.initialize(row);
-
+			System.out.println("===initializeVectorAggregation===740===");
 			// get the first value, accumulate it into itself
 			currAggregate.accumulate(row, row);
 		}
@@ -750,12 +750,12 @@ class GroupedAggregateResultSet extends GenericAggregateResultSet
 	 * @param	newRow	the row to merge
 	 * @param	currRow the row to merge into
 	 *
-	 * @exception	standard Derby exception
+	 *
 	 */
-	private void mergeVectorAggregates(ExecRow newRow, ExecRow currRow,
-		int level)
-		throws StandardException
-	{
+	private void mergeVectorAggregates(ExecRow newRow, ExecRow currRow, int level)
+		throws StandardException {
+		System.out.println("===mergeVectorAggregates===757===");
+
 		for (int i = 0; i < aggregates.length; i++)
 		{
 			GenericAggregator currAggregate = aggregates[i];

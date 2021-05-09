@@ -277,7 +277,7 @@ public class GenericPreparedStatement
 		Activation ac;
 		synchronized (this) {
 			GeneratedClass gc = getActivationClass();
-
+			//System.out.println("===getActivation===280==="+this.getClass().getName()+"==="+gc.getName());
 			if (gc == null) {
 				rePrepare(lcc);
 				gc = getActivationClass();
@@ -468,7 +468,7 @@ recompileOutOfDatePlan:
 			try {
 	
 				resultSet = activation.execute();
-				System.out.println("===executeStmt===471==="+activation.getClass().getName()+"==="+resultSet.getClass().getName());
+				//System.out.println("===executeStmt===471==="+activation.getClass().getName()+"==="+resultSet.getClass().getName());
 				resultSet.open();
 			} catch (StandardException se) {
 				/* Cann't handle recompiling SPS action recompile here */
@@ -1059,9 +1059,9 @@ recompileOutOfDatePlan:
 		return activationClass;
 	}
 
-	void setActivationClass(GeneratedClass ac)
-	{
+	void setActivationClass(GeneratedClass ac) {
 		activationClass = ac;
+		//System.out.println("===setActivationClass===1064==="+(ac!=null?ac.getName():"null"));try { Integer.parseInt("setActivationClass"); }catch (Exception e){e.printStackTrace();}
 	}
 
 	//

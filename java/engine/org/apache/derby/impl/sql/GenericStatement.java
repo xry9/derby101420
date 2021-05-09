@@ -545,8 +545,8 @@ public class GenericStatement
 							throw StandardException.newException(SQLState.LANG_STOP_AFTER_OPTIMIZING);
 						}
 					}
-
 					GeneratedClass ac = qt.generate(preparedStmt.getByteCodeSaver());
+					//System.out.println("===preparedStmt===549==="+preparedStmt.getClass().getName()+"==="+qt.getClass().getName()+"==="+ac.getName());
 
 					generateTime = getCurrentTimeMillis(lcc);
 					/* endTimestamp only meaningful if generateTime is meaningful.
@@ -642,7 +642,7 @@ public class GenericStatement
 
 		if (statementContext != null)
 			lcc.popStatementContext(statementContext, null);
-		System.out.println("===prepMinion===645===");
+		//System.out.println("===prepMinion===645===");
 		return preparedStmt;
 	}
 

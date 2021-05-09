@@ -145,7 +145,7 @@ class SelectNode extends ResultSetNode
 		 * Consider adding selectAggregates and whereAggregates 
 		 */
         setResultColumns( selectList );
-
+		System.out.println("===SelectNode===148===");//try{ Integer.parseInt("SelectNode"); }catch (Exception e){e.printStackTrace();}
         if (getResultColumns() != null) {
 			getResultColumns().markInitialSize();
         }
@@ -571,11 +571,11 @@ class SelectNode extends ResultSetNode
 		// WindowFunctionNode.bindExpression.
 
 		fromListParam.setWindows(windows);
-
-		getResultColumns().bindExpressions(fromListParam, 
+		//System.out.println("===bindExpressions===574==="+selectAggregates.size());
+		getResultColumns().bindExpressions(fromListParam,
 									  selectSubquerys,
 									  selectAggregates);
-
+		//System.out.println("===bindExpressions===578==="+selectAggregates.size());
 		/* We're done if we're only binding the target list.
 		 * (After we restore the fromList, of course.)
 		 */
@@ -1522,10 +1522,10 @@ class SelectNode extends ResultSetNode
 		** JRESOLVE: what about correlated aggregates from another
 		** block.
 		*/ 
-		if (((selectAggregates != null) && (selectAggregates.size() > 0)) 
-			|| (groupByList != null))
+		if (((selectAggregates != null) && (selectAggregates.size() > 0)) || (groupByList != null))
 		{
 			List<AggregateNode> aggs = selectAggregates;
+
 			if (havingAggregates != null && !havingAggregates.isEmpty()) {
 				havingAggregates.addAll(selectAggregates);
 				aggs = havingAggregates;

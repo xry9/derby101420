@@ -377,7 +377,7 @@ public class EmbedResultSet extends ConnectionChild
 	 * @exception SQLException thrown on failure.
      */
     public boolean next() throws SQLException {
-		System.out.println("===next===380===");
+		//System.out.println("===next===380===");
         // we seem to have some trigger paths which don't have
         // statement initialized, may not need this check in those cases
         if (maxRows !=0 )

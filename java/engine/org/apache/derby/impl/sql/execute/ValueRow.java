@@ -89,11 +89,11 @@ class ValueRow implements ExecRow
 
 	// position is 1-based.
 	public void setColumn(int position, DataValueDescriptor col) {
- 
-		if (position > column.length)
-			realloc(position); // enough for this column
+		if (position > column.length) realloc(position); // enough for this column
 		column[position-1] = col;
-		//System.out.println("===setColumn===96===");try { Integer.parseInt("setColumn"); }catch (Exception e){e.printStackTrace();}
+		if (col != null){
+			//System.out.println("===setColumn===96==="+col);//try { Integer.parseInt("setColumn"); }catch (Exception e){e.printStackTrace();}
+		}
 	}
 
 	/*

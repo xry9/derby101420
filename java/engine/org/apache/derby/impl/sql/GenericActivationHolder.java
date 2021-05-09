@@ -107,8 +107,8 @@ final public class GenericActivationHolder implements Activation
 
 		this.gc = gc;
 		this.ps = ps;
-
 		ac = (BaseActivation) gc.newInstance(lcc);
+		System.out.println("===GenericActivationHolder===111==="+ac.getClass().getName()+"==="+gc.getName());
 		ac.setupActivation(ps, scrollable);
 		paramTypes = ps.getParameterTypes();
 	}
@@ -318,9 +318,9 @@ final public class GenericActivationHolder implements Activation
 				ac = newAC;
 				gc = newGC;
 				paramTypes = newParamTypes;
+
 			}
 		}
-
 		String cursorName = ac.getCursorName();
 		if (cursorName != null)
 		{
@@ -333,7 +333,7 @@ final public class GenericActivationHolder implements Activation
 				throw StandardException.newException(SQLState.LANG_CURSOR_ALREADY_EXISTS, cursorName);
 			}
 		}
-
+		System.out.println("===execute===336==="+ac.getClass().getName());
 		return ac.execute();
 	}
 

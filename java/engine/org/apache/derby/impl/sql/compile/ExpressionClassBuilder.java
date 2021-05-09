@@ -105,14 +105,14 @@ abstract	class ExpressionClassBuilder implements ExpressionClassBuilderInterface
 
 		myCompCtx = cc;
 		JavaFactory javaFac = myCompCtx.getJavaFactory();
-
+		System.out.println("===ExpressionClassBuilder===108==="+( className == null ));
 		if ( className == null ) { className = myCompCtx.getUniqueClassName(); }
 
 		// start the class
 		cb = javaFac.newClassBuilder(myCompCtx.getClassFactory(),
 			getPackageName(), modifiers,
 			className, superClass);
-
+		System.out.println("===ExpressionClassBuilder===115==="+superClass+"==="+getPackageName()+"==="+className);//try { Integer.parseInt("ExpressionClassBuilder"); }catch (Exception e){e.printStackTrace();}
 		beginConstructor();
 	}
 
@@ -198,8 +198,8 @@ abstract	class ExpressionClassBuilder implements ExpressionClassBuilderInterface
     private void beginConstructor()
 	{
 		// create a constructor that just calls super.  
-		MethodBuilder realConstructor =
-			cb.newConstructorBuilder(Modifier.PUBLIC);
+		MethodBuilder realConstructor = cb.newConstructorBuilder(Modifier.PUBLIC);
+
 		realConstructor.callSuper();
 		realConstructor.methodReturn();
 		realConstructor.complete();
@@ -821,7 +821,7 @@ abstract	class ExpressionClassBuilder implements ExpressionClassBuilderInterface
 		}
 
 	    gc =  cb.getGeneratedClass();
-
+		System.out.println("===getGeneratedClass===824==="+gc.getName()+"==="+cb.getName());
 		return gc; // !! yippee !! here it is...
 	}
 

@@ -125,7 +125,7 @@ public class T_UUIDFactory extends T_Generic {
 		// Check that we can transform from string to UUID and back
 		// for a few "interesting" UUIDs.
 
-		// This one came from GUIDGEN.EXE.
+
 		testUUIDConversions(out, "7878FCD0-DA09-11d0-BAFE-0060973F0942");
 
 		// Interesting bit patterns.

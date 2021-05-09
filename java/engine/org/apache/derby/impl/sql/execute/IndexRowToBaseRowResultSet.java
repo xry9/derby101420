@@ -386,9 +386,9 @@ class IndexRowToBaseRowResultSet extends NoPutResultSetImpl
 						{
 							if (indexCols[index] != -1)
 							{
-								compactRow.setColumn(
-											index + 1,
-											sourceRow.getColumn(indexCols[index] + 1));
+								compactRow.setColumn(index + 1, sourceRow.getColumn(indexCols[index] + 1));
+								System.out.println("===compactRow===390==="+sourceRow);
+
 							}
 						}
 					}
